@@ -1,0 +1,94 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/zhangyipeng/Downloads/GITHUB/ReactNativeSegmented/android/react-native-segmented-android',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/zhangyipeng/.npm/react-native-segmented-android/1.0.2/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/zhangyipeng/.npm/react-native-segmented-android/1.0.2/package.tgz',
+9 verbose tar pack   '/Users/zhangyipeng/Downloads/GITHUB/ReactNativeSegmented/android/react-native-segmented-android' ]
+10 verbose tarball /Users/zhangyipeng/.npm/react-native-segmented-android/1.0.2/package.tgz
+11 verbose folder /Users/zhangyipeng/Downloads/GITHUB/ReactNativeSegmented/android/react-native-segmented-android
+12 info prepublish react-native-segmented-android@1.0.2
+13 verbose addLocalTarball adding from inside cache /Users/zhangyipeng/.npm/react-native-segmented-android/1.0.2/package.tgz
+14 silly cache afterAdd react-native-segmented-android@1.0.2
+15 verbose afterAdd /Users/zhangyipeng/.npm/react-native-segmented-android/1.0.2/package/package.json not in flight; writing
+16 verbose afterAdd /Users/zhangyipeng/.npm/react-native-segmented-android/1.0.2/package/package.json written
+17 silly publish { name: 'react-native-segmented-android',
+17 silly publish   version: '1.0.2',
+17 silly publish   description: 'a high imitation of iOS segmented Controls',
+17 silly publish   main: 'AndroidSegmented.js',
+17 silly publish   scripts: { test: 'react-native start' },
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/zzyyppqq/react-native-segmented-android.git' },
+17 silly publish   keywords: [ 'android', 'segmented', 'react-component', 'react-native' ],
+17 silly publish   author: { name: 'zzyyppqq' },
+17 silly publish   license: 'ISC',
+17 silly publish   peerDependencies: { 'react-native': '^1.0.1' },
+17 silly publish   readme: '# react-native-segmented-android\na high imitation of iOS segmented Controls\n\n![look segmented android example](./art/segment_2.png)\n\n## Example\n\n```js\n\'use strict\';\n\nvar React = require(\'react-native\');\nvar {\n  AppRegistry,\n  StyleSheet,\n  Text,\n  Dimensions,\n  ToastAndroid,\n  View,\n} = React;\n\nvar AndroidSegmented = require(\'react-native-segmented-android\');\nvar deviceWidth = Dimensions.get(\'window\').width;\nvar deviceHeight = Dimensions.get(\'window\').height;\n\nvar ReactNativeSegmentedExample = React.createClass({\n  onSelectPosition:function(event){\n    console.log(event);\n    ToastAndroid.show(\'segment \'+event.selected, ToastAndroid.SHORT)\n  },\n  render: function() {\n    return (\n      <View>\n          <AndroidSegmented\n            tintColor={[\'#ff0000\',\'#ffffff\']}\n            style={{width:deviceWidth,height:60,backgroundColor:\'#fff000\',\n                  justifyContent: \'center\',\n                  alignItems: \'center\'}}\n            childText={[\'One\',\'Two\',\'Three\',\'Four\',"Five"]}\n            orientation=\'horizontal\'\n            selectedPosition={0}\n            onChange={this.onSelectPosition} />\n\n            <AndroidSegmented\n              tintColor={[\'#009688\',\'#ffffff\']}\n              style={{width:deviceWidth,height:200,backgroundColor:\'#fff000\',\n                    justifyContent: \'center\',\n                    alignItems: \'center\'}}\n              childText={[\'One\',\'Two\',\'Three\',\'Four\',"Five"]}\n              orientation=\'vertical\'\n              selectedPosition={0}\n              onChange={this.onSelectPosition} />\n        </View>\n    );\n  }\n});\n\n```\n\n## Install\n\n### Step 1 - Install the npm package\n\n```sh\n$ npm install react-native-segmented-android --save\n```\n\n### Step 2 - Update Gradle Settings\n\n```gradle\n// file: android/settings.gradle\n...\n\ninclude \':react-native-segmented-android\', \':app\'\nproject(\':react-native-segmented-android\').projectDir = new File(rootProject.projectDir,\'../node_modules/react-native-segmented-android\')\n```\n\n### Step 3 - Update app Gradle Build\n\n```gradle\n// file: android/app/build.gradle\n...\n\ndependencies {\n    ...\n    compile project(\':react-native-segmented-android\')\n}\n```\n\n### Step 4 - Register React Package\n\n```java\n...\nimport com.higo.zhangyp.segmented.AndroidSegmentedPackage; // <-- import\n\npublic class MainActivity extends FragmentActivity implements DefaultHardwareBackBtnHandler {\n\n    private ReactInstanceManager mReactInstanceManager;\n    private ReactRootView mReactRootView;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        mReactRootView = new ReactRootView(this);\n        mReactInstanceManager = ReactInstanceManager.builder()\n                .setApplication(getApplication())\n                .setBundleAssetName("index.android.bundle")\n                .setJSMainModuleName("index.android")\n                .addPackage(new MainReactPackage())\n                .addPackage(new AndroidSegmentedPackage()) // <-- Register package here\n                .setUseDeveloperSupport(BuildConfig.DEBUG)\n                .setInitialLifecycleState(LifecycleState.RESUMED)\n                .build();\n        mReactRootView.startReactApplication(mReactInstanceManager, "AwesomeProject", null);\n        setContentView(mReactRootView);\n    }\n...\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: 'a5370e7fe8c3d01fb77f5b096329cb1d6146eb2e',
+17 silly publish   bugs: { url: 'https://github.com/zzyyppqq/react-native-segmented-android/issues' },
+17 silly publish   homepage: 'https://github.com/zzyyppqq/react-native-segmented-android#readme',
+17 silly publish   _id: 'react-native-segmented-android@1.0.2',
+17 silly publish   _shasum: 'de16c0d601176142407bf323bdbda1d6a916cf62',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name react-native-segmented-android
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/react-native-segmented-android
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/zhangyipeng/.npm/react-native-segmented-android/1.0.2/package.tgz
+25 verbose request uri https://registry.npmjs.org/react-native-segmented-android
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 23:45:27
+28 verbose request using bearer token for auth
+29 verbose request id f50cb772547b7b28
+30 http request PUT https://registry.npmjs.org/react-native-segmented-android
+31 http 403 https://registry.npmjs.org/react-native-segmented-android
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=300',
+32 verbose headers   'content-length': '95',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Wed, 16 Dec 2015 15:45:37 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-itm7424-ITM',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1450280728.041507,VS0,VE9863' }
+33 verbose request invalidating /Users/zhangyipeng/.npm/registry.npmjs.org/react-native-segmented-android on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 1.0.2." : react-native-segmented-android
+35 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+35 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+35 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+35 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+35 verbose stack     at emitTwo (events.js:87:13)
+35 verbose stack     at Request.emit (events.js:172:7)
+35 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1063:14)
+35 verbose stack     at emitOne (events.js:82:20)
+35 verbose stack     at Request.emit (events.js:169:7)
+35 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+36 verbose statusCode 403
+37 verbose pkgid react-native-segmented-android
+38 verbose cwd /Users/zhangyipeng/Downloads/GITHUB/ReactNativeSegmented/android/react-native-segmented-android
+39 error Darwin 15.0.0
+40 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+41 error node v4.2.1
+42 error npm  v2.14.7
+43 error code E403
+44 error "You cannot publish over the previously published version 1.0.2." : react-native-segmented-android
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]
