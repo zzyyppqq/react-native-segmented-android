@@ -19,6 +19,6 @@
   "author": "zzyyppqq",
   "license": "ISC",
   "peerDependencies": {
-    "react-native": "^1.0.1"
+    "react-native": ">= 0.18.0"
   }
 }
