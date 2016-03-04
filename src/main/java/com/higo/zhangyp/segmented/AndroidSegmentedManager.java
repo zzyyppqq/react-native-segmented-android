@@ -3,7 +3,6 @@ package com.higo.zhangyp.segmented;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -38,28 +37,28 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
     }
 
 
-    private int position;
-
     @Override
     protected void addEventEmitters(final ThemedReactContext reactContext, final AndroidSegmented view) {
 
         view.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
+
                 int childCount = view.getChildCount();
-                for (int i=0;i<childCount;i++){
-                    if(view.getChildAt(i).getId()==checkedId){
-                        position = i;
+                for (int i = 0; i < childCount; i++) {
+                    ((RadioButton)view.getChildAt(i)).setChecked(false);
+                    if (view.getChildAt(i).getId() == checkedId) {
+                        ((RadioButton)view.getChildAt(i)).setChecked(true);
+
+
+                        reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher()
+                                .dispatchEvent(
+                                        new AndroidSegmentedEvent(
+                                                view.getId(),
+                                                SystemClock.uptimeMillis(),
+                                                i));
                     }
                 }
-                reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher()
-                        .dispatchEvent(
-                                new AndroidSegmentedEvent(
-                                        view.getId(),
-                                        SystemClock.uptimeMillis(),
-                                        position));
-
-
             }
         });
 
@@ -70,13 +69,13 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
     @ReactProp(name = "childText")
     public void setChildText(AndroidSegmented view, ReadableArray data) {
         int childCount = data.size();
-        Log.e("TAG", "___" + childCount);
 
-        for (int i = 0; i < childCount; i++) {
+        for (int i = 0; i < childCount; ++i) {
             RadioButton child = (RadioButton) LayoutInflater.from(context).inflate(R.layout.radio_button, null);
 
             child.setText(data.getString(i));
             view.addView(child);
+
 
         }
     }
@@ -84,7 +83,7 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
 
     @ReactProp(name = "selectedPosition")
     public void setSelectedChild(AndroidSegmented view, int position) {
-        RadioButton radioBt= (RadioButton)(view.getChildAt(position));
+        RadioButton radioBt = (RadioButton) (view.getChildAt(position));
         radioBt.setChecked(true);
     }
 
