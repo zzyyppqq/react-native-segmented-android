@@ -24,3 +24,5 @@ dependencies {
     compile 'info.hoang8f:android-segmented:1.0.6'
     compile 'com.facebook.react:react-native:0.16.+'
 }
+//react-native run-android
+//adb reverse tcp:8081 tcp:8081

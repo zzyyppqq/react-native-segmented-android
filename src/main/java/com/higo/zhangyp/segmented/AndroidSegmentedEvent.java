@@ -40,7 +40,8 @@ public class AndroidSegmentedEvent extends Event<AndroidSegmentedEvent> {
 
     private WritableMap serializeEventData() {
         WritableMap eventData = Arguments.createMap();
-        eventData.putInt("selected", getPosition());
+        eventData.putInt("target", getViewTag());
+        eventData.putInt("value", getPosition());
         Log.e("AAA","position="+getPosition());
 
         return eventData;

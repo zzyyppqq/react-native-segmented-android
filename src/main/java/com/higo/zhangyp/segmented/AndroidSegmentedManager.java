@@ -37,18 +37,7 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
         return new AndroidSegmented(reactContext);
     }
 
-//    @Nullable
-//    @Override
-//    public Map<String, Object> getExportedCustomBubblingEventTypeConstants() {
-//        return MapBuilder.<String, Object>builder()
-//                .put(
-//                        "topChange",
-//                        MapBuilder.of(
-//                                "phasedRegistrationNames",
-//                                MapBuilder.of(
-//                                        "bubbled", "onDateChange", "captured", "onDateChangeCapture")))
-//                .build();
-//    }
+
 
     @Override
     protected void addEventEmitters(final ThemedReactContext reactContext, final AndroidSegmented view) {
@@ -99,16 +88,6 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
     }
 
 
-    //    @ReactProp(name = "tintColor")
-//    public void setTintColor(AndroidSegmented view, String color) {
-//        if (color != null) {
-//            if (color.matches(COLOR_REGEX)) {
-//                view.setTintColor(Color.parseColor(color));
-//            } else {
-//                throw new JSApplicationIllegalArgumentException("Invalid arrowColor property: " + color);
-//            }
-//        }
-//    }
     @ReactProp(name = "tintColor")
     public void setTintColor(AndroidSegmented view, ReadableArray data) {
 
@@ -127,8 +106,5 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
                 }
             }
         }
-
     }
-
-
 }
