@@ -25,7 +25,7 @@ var deviceHeight = Dimensions.get('window').height;
 var ReactNativeSegmentedExample = React.createClass({
   onSelectPosition:function(event){
     console.log(event);
-    ToastAndroid.show('segment '+event.selected, ToastAndroid.SHORT)
+    ToastAndroid.show('segment '+event.value, ToastAndroid.SHORT)
   },
   render: function() {
     return (
