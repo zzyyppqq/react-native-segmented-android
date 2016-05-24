@@ -1,7 +1,8 @@
 'use strict';
 
-var React = require('react-native');
-var { requireNativeComponent, PropTypes, View } = React;
+var React = require('react');
+var { PropTypes } = React;
+var { requireNativeComponent, View } = require('react-native');
 
 var NativeAndroidSegmented = requireNativeComponent('AndroidSegmented', AndroidSegmented);
 
