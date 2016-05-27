@@ -25,6 +25,8 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
 
     private Context context;
 
+    private int selectedPosition = -1;
+
     @Override
     public String getName() {
         return REACT_CLASS;
@@ -65,11 +67,27 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
 
     }
 
+    protected void onAfterUpdateTransaction(AndroidSegmented view) {
+        // We don't want to update selectedPosition when it's set,
+        // as the childText may not have been set yet. Resulting in array-out-of-bounds accesses.
+        // So we delay setChecked()-ing until here.
+        // Also re-sets any checked values after a childText change, too.
+        int childCount = view.getChildCount();
+        for (int i = 0; i < childCount; ++i) {
+            RadioButton radioBt = (RadioButton) (view.getChildAt(i));
+            radioBt.setChecked(i == selectedPosition);
+        }
+        // Ensure our tintColor and orientation gets applied to the existing view children,
+        // even if they were setup before the view children were constructed to receive them.
+        view.updateBackground();
+
+    }
 
     @ReactProp(name = "childText")
     public void setChildText(AndroidSegmented view, ReadableArray data) {
         int childCount = data.size();
 
+        view.removeAllViews();
         for (int i = 0; i < childCount; ++i) {
             RadioButton child = (RadioButton) LayoutInflater.from(context).inflate(R.layout.radio_button, null);
 
@@ -83,8 +101,7 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
 
     @ReactProp(name = "selectedPosition")
     public void setSelectedChild(AndroidSegmented view, int position) {
-        RadioButton radioBt = (RadioButton) (view.getChildAt(position));
-        radioBt.setChecked(true);
+        selectedPosition = position;
     }
 
 
