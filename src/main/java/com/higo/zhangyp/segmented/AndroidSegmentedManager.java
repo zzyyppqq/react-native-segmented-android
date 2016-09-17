@@ -57,7 +57,6 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
                                 .dispatchEvent(
                                         new AndroidSegmentedEvent(
                                                 view.getId(),
-                                                SystemClock.uptimeMillis(),
                                                 i));
                     }
                 }
