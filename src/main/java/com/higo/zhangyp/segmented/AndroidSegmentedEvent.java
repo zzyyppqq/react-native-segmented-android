@@ -15,8 +15,8 @@ public class AndroidSegmentedEvent extends Event<AndroidSegmentedEvent> {
     public static final String EVENT_NAME = "topChange";
     private final int selectedPosition;
 
-    public AndroidSegmentedEvent(int viewId, long timestampMs, int selectedPosition) {
-        super(viewId, timestampMs);
+    public AndroidSegmentedEvent(int viewId, int selectedPosition) {
+        super(viewId);
         this.selectedPosition = selectedPosition;
     }
 
@@ -40,9 +40,7 @@ public class AndroidSegmentedEvent extends Event<AndroidSegmentedEvent> {
 
     private WritableMap serializeEventData() {
         WritableMap eventData = Arguments.createMap();
-//        eventData.putInt("target", getViewTag());
-        eventData.putInt("selected", getPosition());
-        Log.e("AAA","position="+getPosition());
+        eventData.putInt("selectedPosition", getPosition());
 
         return eventData;
     }

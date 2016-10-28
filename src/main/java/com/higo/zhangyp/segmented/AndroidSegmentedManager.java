@@ -48,21 +48,14 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
                 for (int i = 0; i < childCount; i++) {
                     ((RadioButton)view.getChildAt(i)).setChecked(false);
                     if (view.getChildAt(i).getId() == checkedId) {
-                        ((RadioButton)view.getChildAt(i)).setChecked(true);
+                      ((RadioButton)view.getChildAt(i)).setChecked(true);
 
-
-                        reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher()
-                                .dispatchEvent(
-                                        new AndroidSegmentedEvent(
-                                                view.getId(),
-                                                SystemClock.uptimeMillis(),
-                                                i));
+                      reactContext.getNativeModule(UIManagerModule.class).getEventDispatcher()
+                        .dispatchEvent(new AndroidSegmentedEvent(view.getId(), i));
                     }
                 }
             }
         });
-
-
     }
 
 
@@ -75,8 +68,6 @@ public class AndroidSegmentedManager extends SimpleViewManager<AndroidSegmented>
 
             child.setText(data.getString(i));
             view.addView(child);
-
-
         }
     }
 
