@@ -22,7 +22,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'info.hoang8f:android-segmented:1.0.6'
-    compile 'com.facebook.react:react-native:0.34.+'
+    compile 'com.facebook.react:react-native:+'
 }
 //react-native run-android
 //adb reverse tcp:8081 tcp:8081
