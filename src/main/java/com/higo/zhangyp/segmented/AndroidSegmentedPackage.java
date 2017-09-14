@@ -24,7 +24,6 @@ public class AndroidSegmentedPackage implements ReactPackage {
                 new AndroidSegmentedManager());
     }
 
-    @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
         return Collections.emptyList();
     }
